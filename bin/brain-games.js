@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
-import { welcomeUser } from '../src/cli.js';
+import cli from '../src/cli.js';
 
 console.log('Welcome to the Brain Games!\n');
 
-welcomeUser();
+cli.welcomeUser();

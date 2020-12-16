@@ -6,4 +6,4 @@ function welcomeUser() {
   console.log(`Привет, ${userName}!`);
 }
 
-export { welcomeUser };
+export default { welcomeUser };
