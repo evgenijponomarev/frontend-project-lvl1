@@ -29,6 +29,17 @@ export function gcd(number1, number2) {
     .find((v) => number1 % v === 0 && number2 % v === 0);
 }
 
+export function getMissedProgressionNumber(progression = [], replacer = '..') {
+  const missedNumberIndex = progression.indexOf(replacer);
+  const diff = missedNumberIndex > 1
+    ? progression[1] - progression[0]
+    : progression[3] - progression[2];
+
+  return !missedNumberIndex
+    ? progression[1] - diff
+    : progression[missedNumberIndex - 1] + diff;
+}
+
 export default {
   isEven,
   sum,
@@ -36,4 +47,5 @@ export default {
   multiply,
   divide,
   gcd,
+  getMissedProgressionNumber,
 };
