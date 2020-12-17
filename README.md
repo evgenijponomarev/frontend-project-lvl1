@@ -20,3 +20,6 @@
 
 ### Gameplay of brain-progression
 [![asciicast](https://asciinema.org/a/379760.svg)](https://asciinema.org/a/379760)
+
+### Gameplay of brain-prime
+[![asciicast](https://asciinema.org/a/379763.svg)](https://asciinema.org/a/379763)

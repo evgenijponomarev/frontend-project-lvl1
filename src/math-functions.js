@@ -40,6 +40,16 @@ export function getMissedProgressionNumber(progression = [], replacer = '..') {
     : progression[missedNumberIndex - 1] + diff;
 }
 
+export function isPrime(number) {
+  if (number < 2) return false;
+
+  return !new Array(Math.floor(number / 2))
+    .fill()
+    .map((v, k) => k + 1)
+    .slice(1)
+    .some((v) => number % v === 0);
+}
+
 export default {
   isEven,
   sum,
@@ -48,4 +58,5 @@ export default {
   divide,
   gcd,
   getMissedProgressionNumber,
+  isPrime,
 };
