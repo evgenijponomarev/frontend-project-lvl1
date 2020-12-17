@@ -1,10 +1,16 @@
 import game from '../index.js';
+import {
+  sum,
+  subtract,
+  multiply,
+  divide,
+} from '../math-functions.js';
 
 const operators = {
-  '+': (n1, n2) => n1 + n2,
-  '-': (n1, n2) => n1 - n2,
-  '*': (n1, n2) => n1 * n2,
-  '/': (n1, n2) => n1 / n2,
+  '+': sum,
+  '-': subtract,
+  '*': multiply,
+  '/': divide,
 };
 
 function showStartMessage() {
@@ -22,11 +28,12 @@ function getCorrectAnswer(number1, number2, operatorLabel) {
 }
 
 function runGameRound() {
-  const number1 = game.getRandomNumber(-10, 10);
-  const number2 = game.getRandomNumber(-10, 10);
+  const number1 = game.getRandomNumber();
+  const number2 = game.getRandomNumber();
   const operatorLabel = getRandomOperatorLabel();
   const userAnswer = game.askQuestion(`${number1} ${operatorLabel} ${number2}`);
   const correctAnswer = getCorrectAnswer(number1, number2, operatorLabel);
+
   game.showResultMessage(userAnswer, correctAnswer);
 
   return userAnswer === correctAnswer;
