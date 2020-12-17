@@ -1,8 +1,8 @@
 #! /usr/bin/env node
 
 import cli from '../src/cli.js';
-import brainEven from '../src/brain-even.js';
+import play from '../src/games/brain-even.js';
 
-const userName = cli.welcomeUser();
+const userName = cli.greeting();
 
-brainEven.startGame(userName);
+play(userName);
