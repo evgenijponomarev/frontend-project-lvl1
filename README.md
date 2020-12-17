@@ -6,5 +6,11 @@
 ### CodeClimate:
 [![Maintainability](https://api.codeclimate.com/v1/badges/1843673011beb9f20e83/maintainability)](https://codeclimate.com/github/evgeniy1801/frontend-project-lvl1/maintainability)
 
-### How to install and play:
-[![asciicast](https://asciinema.org/a/379573.svg)](https://asciinema.org/a/379573)
+### Install:
+[![asciicast](https://asciinema.org/a/379734.svg)](https://asciinema.org/a/379734)
+
+### Gameplay of brain-even
+[![asciicast](https://asciinema.org/a/379737.svg)](https://asciinema.org/a/379737)
+
+### Gameplay of brain-calc
+[![asciicast](https://asciinema.org/a/379738.svg)](https://asciinema.org/a/379738)
