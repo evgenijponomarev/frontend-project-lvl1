@@ -1,3 +1,7 @@
+export function isEven(number) {
+  return number % 2 === 0;
+}
+
 export function sum(number1, number2) {
   return number1 + number2;
 }
@@ -26,6 +30,7 @@ export function gcd(number1, number2) {
 }
 
 export default {
+  isEven,
   sum,
   subtract,
   multiply,

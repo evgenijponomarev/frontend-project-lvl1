@@ -1,11 +1,12 @@
 import game from '../index.js';
+import { isEven } from '../math-functions.js';
 
 function showStartMessage() {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 }
 
 function getCorrectAnswer(number) {
-  return number % 2 === 0 ? 'yes' : 'no';
+  return isEven(number) ? 'yes' : 'no';
 }
 
 function runGameRound() {
