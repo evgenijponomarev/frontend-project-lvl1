@@ -14,3 +14,6 @@
 
 ### Gameplay of brain-calc
 [![asciicast](https://asciinema.org/a/379738.svg)](https://asciinema.org/a/379738)
+
+### Gameplay of brain-gcd
+[![asciicast](https://asciinema.org/a/379745.svg)](https://asciinema.org/a/379745)
