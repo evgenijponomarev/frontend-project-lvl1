@@ -1,32 +1,17 @@
-import game from '../index.js';
+import getRandomNumber from '../get-random-number.js';
 
-function isEven(number) {
+function numberIsEven(number) {
   return number % 2 === 0;
 }
 
-function showStartMessage() {
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-}
+export default {
+  startMessage: 'Answer "yes" if the number is even, otherwise answer "no".',
+  getDataForRound: () => {
+    const number = getRandomNumber();
 
-function getCorrectAnswer(number) {
-  return isEven(number) ? 'yes' : 'no';
-}
-
-function runGameRound() {
-  const number = game.getRandomNumber();
-  const userAnswer = game.askQuestion(number);
-  const correctAnswer = getCorrectAnswer(number);
-  game.showResultMessage(userAnswer, correctAnswer);
-
-  return userAnswer === correctAnswer;
-}
-
-function play(userName) {
-  showStartMessage();
-
-  const result = game.startGame(runGameRound);
-
-  game.showFinalMessage(result, userName);
-}
-
-export default play;
+    return {
+      questionMessage: number,
+      correctAnswer: numberIsEven(number) ? 'yes' : 'no',
+    };
+  },
+};

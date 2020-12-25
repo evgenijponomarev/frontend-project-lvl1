@@ -1,4 +1,4 @@
-import game from '../index.js';
+import getRandomNumber from '../get-random-number.js';
 
 const MAX_NUMBER = 3571;
 
@@ -12,31 +12,14 @@ function numberIsPrime(number) {
     .some((v) => number % v === 0);
 }
 
-function showStartMessage() {
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-}
+export default {
+  startMessage: 'Answer "yes" if given number is prime. Otherwise answer "no".',
+  getDataForRound: () => {
+    const number = getRandomNumber(2, MAX_NUMBER);
 
-function getCorrectAnswer(number) {
-  return numberIsPrime(number) ? 'yes' : 'no';
-}
-
-function runGameRound() {
-  const number = game.getRandomNumber(2, MAX_NUMBER);
-
-  const userAnswer = game.askQuestion(number);
-  const correctAnswer = getCorrectAnswer(number);
-
-  game.showResultMessage(userAnswer, correctAnswer);
-
-  return userAnswer === correctAnswer;
-}
-
-function play(userName) {
-  showStartMessage();
-
-  const result = game.startGame(runGameRound);
-
-  game.showFinalMessage(result, userName);
-}
-
-export default play;
+    return {
+      questionMessage: number,
+      correctAnswer: numberIsPrime(number) ? 'yes' : 'no',
+    };
+  },
+};

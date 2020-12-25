@@ -1,4 +1,4 @@
-import game from '../index.js';
+import getRandomNumber from '../get-random-number.js';
 
 function getGcd(number1, number2) {
   const minNumber = Math.min(number1, number2);
@@ -11,31 +11,15 @@ function getGcd(number1, number2) {
     .find((v) => number1 % v === 0 && number2 % v === 0);
 }
 
-function showStartMessage() {
-  console.log('Find the greatest common divisor of given numbers.');
-}
+export default {
+  startMessage: 'Find the greatest common divisor of given numbers.',
+  getDataForRound: () => {
+    const number1 = getRandomNumber(1);
+    const number2 = getRandomNumber(1);
 
-function getCorrectAnswer(number1, number2) {
-  return getGcd(number1, number2).toString();
-}
-
-function runGameRound() {
-  const number1 = game.getRandomNumber(1);
-  const number2 = game.getRandomNumber(1);
-  const userAnswer = game.askQuestion(`${number1} ${number2}`);
-  const correctAnswer = getCorrectAnswer(number1, number2);
-
-  game.showResultMessage(userAnswer, correctAnswer);
-
-  return userAnswer === correctAnswer;
-}
-
-function play(userName) {
-  showStartMessage();
-
-  const result = game.startGame(runGameRound);
-
-  game.showFinalMessage(result, userName);
-}
-
-export default play;
+    return {
+      questionMessage: `${number1} ${number2}`,
+      correctAnswer: getGcd(number1, number2).toString(),
+    };
+  },
+};

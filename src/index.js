@@ -1,39 +1,29 @@
 import readLineSync from 'readline-sync';
+import cli from './cli.js';
 
 const ROUNDS_COUNT = 3;
 
-function getRandomNumber(min = -100, max = 100) {
-  return Math.floor(
-    Math.random() * (max - min) + min,
-  );
-}
+export default function play(game) {
+  const userName = cli.greeting();
 
-function askQuestion(question) {
-  console.log(`Question: ${question}`);
+  console.log(game.startMessage);
 
-  return readLineSync.question('Your answer: ');
-}
+  for (let i = 0; i < ROUNDS_COUNT; i += 1) {
+    const { questionMessage, correctAnswer } = game.getDataForRound();
 
-function showResultMessage(userAnswer, correctAnswer) {
-  if (userAnswer !== correctAnswer) {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-  } else {
+    console.log(questionMessage);
+
+    const userAnswer = readLineSync.question('Your answer: ');
+
+    if (userAnswer !== correctAnswer) {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
+
+      return;
+    }
+
     console.log('Correct!');
   }
-}
 
-function showFinalMessage(isSuccess, userName) {
-  console.log(isSuccess ? `Congratulations, ${userName}!` : `Let's try again, ${userName}!`);
+  console.log(`Congratulations, ${userName}!`);
 }
-
-function startGame(runGameRound) {
-  return !Array(ROUNDS_COUNT).fill().some(() => !runGameRound());
-}
-
-export default {
-  getRandomNumber,
-  askQuestion,
-  showResultMessage,
-  showFinalMessage,
-  startGame,
-};
