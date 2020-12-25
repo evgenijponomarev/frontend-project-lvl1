@@ -1,12 +1,22 @@
 import game from '../index.js';
-import { gcd } from '../math-functions.js';
+
+function getGcd(number1, number2) {
+  const minNumber = Math.min(number1, number2);
+
+  return new Array(Math.floor(minNumber / 2))
+    .fill()
+    .map((v, k) => k + 1)
+    .concat(minNumber)
+    .reverse()
+    .find((v) => number1 % v === 0 && number2 % v === 0);
+}
 
 function showStartMessage() {
   console.log('Find the greatest common divisor of given numbers.');
 }
 
 function getCorrectAnswer(number1, number2) {
-  return gcd(number1, number2).toString();
+  return getGcd(number1, number2).toString();
 }
 
 function runGameRound() {

@@ -1,14 +1,23 @@
 import game from '../index.js';
-import { isPrime } from '../math-functions.js';
 
 const MAX_NUMBER = 3571;
+
+function numberIsPrime(number) {
+  if (number < 2) return false;
+
+  return !new Array(Math.floor(number / 2))
+    .fill()
+    .map((v, k) => k + 1)
+    .slice(1)
+    .some((v) => number % v === 0);
+}
 
 function showStartMessage() {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 }
 
 function getCorrectAnswer(number) {
-  return isPrime(number) ? 'yes' : 'no';
+  return numberIsPrime(number) ? 'yes' : 'no';
 }
 
 function runGameRound() {

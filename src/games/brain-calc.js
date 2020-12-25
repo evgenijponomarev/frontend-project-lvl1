@@ -1,16 +1,10 @@
 import game from '../index.js';
-import {
-  sum,
-  subtract,
-  multiply,
-  divide,
-} from '../math-functions.js';
 
 const operators = {
-  '+': sum,
-  '-': subtract,
-  '*': multiply,
-  '/': divide,
+  '+': (number1, number2) => number1 + number2,
+  '-': (number1, number2) => number1 - number2,
+  '*': (number1, number2) => number1 * number2,
+  '/': (number1, number2) => number1 / number2,
 };
 
 function showStartMessage() {

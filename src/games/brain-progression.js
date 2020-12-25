@@ -1,11 +1,21 @@
 import game from '../index.js';
-import { getMissedProgressionNumber } from '../math-functions.js';
 
 const REPLACER = '..';
 const MIN_PROGRESSION_LENGTH = 5;
 const MAX_PROGRESSION_LENGTH = 10;
 const MIN_PROGRESSION_DIFF = 1;
 const MAX_PROGRESSION_DIFF = 5;
+
+function getMissedProgressionNumber(progression = [], replacer = '..') {
+  const missedNumberIndex = progression.indexOf(replacer);
+  const diff = missedNumberIndex > 1
+    ? progression[1] - progression[0]
+    : progression[3] - progression[2];
+
+  return !missedNumberIndex
+    ? progression[1] - diff
+    : progression[missedNumberIndex - 1] + diff;
+}
 
 function showStartMessage() {
   console.log('What number is missing in the progression?');

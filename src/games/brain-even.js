@@ -1,5 +1,8 @@
 import game from '../index.js';
-import { isEven } from '../math-functions.js';
+
+function isEven(number) {
+  return number % 2 === 0;
+}
 
 function showStartMessage() {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
