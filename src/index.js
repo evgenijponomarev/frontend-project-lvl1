@@ -1,6 +1,6 @@
 import readLineSync from 'readline-sync';
 
-import ROUNDS_COUNT from './constants/rounds-count.js';
+const ROUNDS_COUNT = 3;
 
 function getRandomNumber(min = -100, max = 100) {
   return Math.floor(
