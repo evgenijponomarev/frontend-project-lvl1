@@ -12,13 +12,13 @@ function getGcd(number1, number2) {
 }
 
 export default {
-  startMessage: 'Find the greatest common divisor of given numbers.',
-  getDataForRound: () => {
+  taskDescription: 'Find the greatest common divisor of given numbers.',
+  getRoundData: () => {
     const number1 = getRandomNumber(1);
     const number2 = getRandomNumber(1);
 
     return {
-      questionMessage: `${number1} ${number2}`,
+      question: `${number1} ${number2}`,
       correctAnswer: getGcd(number1, number2).toString(),
     };
   },

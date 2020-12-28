@@ -1,28 +1,28 @@
 import getRandomNumber from '../get-random-number.js';
 
-const operators = {
+const operations = {
   '+': (number1, number2) => number1 + number2,
   '-': (number1, number2) => number1 - number2,
   '*': (number1, number2) => number1 * number2,
   '/': (number1, number2) => number1 / number2,
 };
 
-function getRandomOperatorLabel() {
-  const operatorLabels = Object.keys(operators);
+function getRandomOperationLabel() {
+  const operationLabels = Object.keys(operations);
 
-  return operatorLabels[getRandomNumber(0, operatorLabels.length - 1)];
+  return operationLabels[getRandomNumber(0, operationLabels.length - 1)];
 }
 
 export default {
-  startMessage: 'What is the result of the expression?',
-  getDataForRound: () => {
+  taskDescription: 'What is the result of the expression?',
+  getRoundData: () => {
     const number1 = getRandomNumber();
     const number2 = getRandomNumber();
-    const operatorLabel = getRandomOperatorLabel();
-    const correctAnswer = operators[operatorLabel](number1, number2).toString();
+    const operationLabel = getRandomOperationLabel();
+    const correctAnswer = operations[operationLabel](number1, number2).toString();
 
     return {
-      questionMessage: `${number1} ${operatorLabel} ${number2}`,
+      question: `${number1} ${operationLabel} ${number2}`,
       correctAnswer,
     };
   },

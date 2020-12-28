@@ -6,33 +6,32 @@ const MAX_PROGRESSION_LENGTH = 10;
 const MIN_PROGRESSION_DIFF = 1;
 const MAX_PROGRESSION_DIFF = 5;
 
-function getMissedProgressionNumber(progression = [], replacer = '..') {
-  const missedNumberIndex = progression.indexOf(replacer);
-  const diff = missedNumberIndex > 1
-    ? progression[1] - progression[0]
-    : progression[3] - progression[2];
-
+function getMissedProgressionNumber(progression = [], missedNumberIndex, diff) {
   return !missedNumberIndex
     ? progression[1] - diff
     : progression[missedNumberIndex - 1] + diff;
 }
 
 export default {
-  startMessage: 'What number is missing in the progression?',
-  getDataForRound: () => {
+  taskDescription: 'What number is missing in the progression?',
+  getRoundData: () => {
     const progressionLength = getRandomNumber(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
     const progressionDiff = getRandomNumber(MIN_PROGRESSION_DIFF, MAX_PROGRESSION_DIFF);
     const firstNumber = getRandomNumber();
-    const hiddenNumberPosition = getRandomNumber(0, progressionLength);
+    const missedNumberIndex = getRandomNumber(0, progressionLength);
     const progressionNumbers = new Array(progressionLength)
       .fill(firstNumber)
       .map((number, key) => number + progressionDiff * key);
 
-    progressionNumbers[hiddenNumberPosition] = REPLACER;
+    progressionNumbers[missedNumberIndex] = REPLACER;
 
     return {
-      questionMessage: progressionNumbers.join(' '),
-      correctAnswer: getMissedProgressionNumber(progressionNumbers, REPLACER).toString(),
+      question: progressionNumbers.join(' '),
+      correctAnswer: getMissedProgressionNumber(
+        progressionNumbers,
+        missedNumberIndex,
+        progressionDiff,
+      ).toString(),
     };
   },
 };

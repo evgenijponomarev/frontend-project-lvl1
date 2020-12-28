@@ -1,17 +1,17 @@
 import getRandomNumber from '../get-random-number.js';
 
-function numberIsEven(number) {
+function isEven(number) {
   return number % 2 === 0;
 }
 
 export default {
-  startMessage: 'Answer "yes" if the number is even, otherwise answer "no".',
-  getDataForRound: () => {
+  taskDescription: 'Answer "yes" if the number is even, otherwise answer "no".',
+  getRoundData: () => {
     const number = getRandomNumber();
 
     return {
-      questionMessage: number,
-      correctAnswer: numberIsEven(number) ? 'yes' : 'no',
+      question: number,
+      correctAnswer: isEven(number) ? 'yes' : 'no',
     };
   },
 };

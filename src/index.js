@@ -6,12 +6,12 @@ const ROUNDS_COUNT = 3;
 export default function play(game) {
   const userName = cli.greeting();
 
-  console.log(game.startMessage);
+  console.log(game.taskDescription);
 
   for (let i = 0; i < ROUNDS_COUNT; i += 1) {
-    const { questionMessage, correctAnswer } = game.getDataForRound();
+    const { question, correctAnswer } = game.getRoundData();
 
-    console.log(questionMessage);
+    console.log(question);
 
     const userAnswer = readLineSync.question('Your answer: ');
 
